@@ -89,11 +89,9 @@ npm run preview
 En production, les données (base SQLite, sauvegardes, secret de session)
 sont persistées dans un volume monté sur `/data`.
 
-Avec adapter-node v6, `ORIGIN` n'est plus lue au runtime : elle doit être
-fournie comme argument de build Docker (`ORIGIN` dans `docker-compose.yml`,
-passé en `ARG`/`ENV` au stade build du `Dockerfile`) afin que SvelteKit
-connaisse l'origine publique de l'application dès la compilation. Elle est
-donc sans effet si elle est seulement définie au lancement du conteneur.
+`ORIGIN` n'est utile qu'au moment du build Docker (`ARG`/`ENV` dans le
+`Dockerfile`, valeur fournie via `docker-compose.yml`) : elle définit
+l'origine publique de l'application (ex: `https://rapports-flash.cloud.daviaud.eu`).
 
 ### Scripts utiles
 

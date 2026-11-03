@@ -1,0 +1,20 @@
+services:
+  app:
+    image: registry.cloud.daviaud.eu/rapports-flash:latest
+    build:
+      context: .
+      args:
+        ORIGIN: https://rapports-flash.cloud.daviaud.eu
+    container_name: rapports-flash
+    volumes:
+      - app-data:/data # app.db + backups + secret de session
+    environment:
+      DATABASE_PATH: /data/app.db
+      SESSION_SECRET_FILE: /data/session-secret
+      BACKUP_DIR: /data/backups
+    ports:
+      - "3047:3000"
+    restart: unless-stopped
+
+volumes:
+  app-data:

@@ -1,0 +1,4 @@
+- Remove text "Matière pour le Conseil informel"
+- Move "Mettre un sujet par ligne." in the form rather than in the repport page
+- In the navabr rename "Mon Rapport" by "Mes rapports"
+- enforce that no repport before 3 months from now can be created or edited

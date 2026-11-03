@@ -63,7 +63,7 @@ L'application est configurée via des variables d'environnement :
 | `DATABASE_PATH`       | Chemin du fichier SQLite                           |
 | `SESSION_SECRET_FILE` | Chemin du fichier contenant le secret de session   |
 | `BACKUP_DIR`          | Répertoire de stockage des sauvegardes             |
-| `ORIGIN`              | Origine publique de l'application (build time)     |
+| `ORIGIN`              | Origine publique de l'application (build time uniquement, voir ci-dessous) |
 
 Le fichier `seed.json` permet de définir les membres initiaux (nom, email,
 mot de passe) chargés via `npm run seed`.
@@ -88,6 +88,12 @@ npm run preview
 
 En production, les données (base SQLite, sauvegardes, secret de session)
 sont persistées dans un volume monté sur `/data`.
+
+Avec adapter-node v6, `ORIGIN` n'est plus lue au runtime : elle doit être
+fournie comme argument de build Docker (`ORIGIN` dans `docker-compose.yml`,
+passé en `ARG`/`ENV` au stade build du `Dockerfile`) afin que SvelteKit
+connaisse l'origine publique de l'application dès la compilation. Elle est
+donc sans effet si elle est seulement définie au lancement du conteneur.
 
 ### Scripts utiles
 

@@ -1,56 +1,96 @@
-# sv
+# Rapports Flash
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+## Présentation
 
-## Creating a project
+Rapports Flash est une application web permettant aux membres d'un conseil
+(élus) de rédiger et consulter des rapports mensuels d'activité ("rapports
+flash"). Chaque membre peut créer, modifier et consulter ses propres
+rapports, parcourir les rapports par mois, consulter la liste des élus et des
+projets associés, et exporter les données au format CSV depuis un espace
+d'administration.
 
-If you're seeing this, you've probably already done this step. Congrats!
+Fonctionnalités principales :
+- Connexion / déconnexion sécurisée des membres.
+- Rédaction et édition d'un rapport par mois (avec une fenêtre d'édition
+  limitée aux 3 derniers mois).
+- Consultation des rapports classés par mois.
+- Gestion des élus et des projets.
+- Gestion du compte personnel.
+- Export CSV des rapports depuis l'espace admin.
 
-```sh
-# create a new project
-npx sv create my-app
+## Technique
+
+### Stack
+
+- [SvelteKit](https://kit.svelte.dev/) (Svelte 5, TypeScript)
+- [Tailwind CSS](https://tailwindcss.com/) pour le style
+- [better-sqlite3](https://github.com/WiseLibs/better-sqlite3) comme base de
+  données
+- [@node-rs/argon2](https://github.com/napi-rs/node-rs) pour le hachage des
+  mots de passe
+- [Zod](https://zod.dev/) pour la validation des données
+- [Vite](https://vitejs.dev/) comme outil de build
+
+### Structure du projet
+
+```
+src/
+  lib/                # Code partagé (composants, accès base de données, utilitaires)
+  routes/
+    connexion/         # Page de connexion
+    deconnexion/        # Déconnexion
+    mon-compte/        # Gestion du compte
+    rapport/           # Création/édition d'un rapport du mois en cours
+    rapport/[annee-mois]/ # Édition d'un rapport d'un mois donné
+    mois/[annee-mois]/  # Consultation des rapports d'un mois
+    elus/              # Liste des élus
+    elus/[slug]/        # Détail d'un élu
+    projets/           # Liste des projets
+    admin/             # Espace d'administration
+    admin/export.csv/   # Export CSV des rapports
+scripts/
+  schema.sql           # Schéma de la base de données SQLite
+  seed.mjs             # Script d'initialisation des données (à partir de seed.json)
+  backup.mjs           # Script de sauvegarde de la base de données
 ```
 
-To recreate this project with the same configuration:
+### Configuration
+
+L'application est configurée via des variables d'environnement :
+
+| Variable              | Description                                      |
+| --------------------- | ------------------------------------------------- |
+| `DATABASE_PATH`       | Chemin du fichier SQLite                           |
+| `SESSION_SECRET_FILE` | Chemin du fichier contenant le secret de session   |
+| `BACKUP_DIR`          | Répertoire de stockage des sauvegardes             |
+| `ORIGIN`              | Origine publique de l'application (build time)     |
+
+Le fichier `seed.json` permet de définir les membres initiaux (nom, email,
+mot de passe) chargés via `npm run seed`.
+
+### Développement local
 
 ```sh
-# recreate this project
-npx sv@1.1.1 create --template minimal --types ts --no-install scaffold-tmp
+npm install
+npm run seed      # initialise la base de données à partir de seed.json
+npm run dev        # lance le serveur de développement
 ```
 
-## Adding features
+### Build et déploiement
 
-Add features to your project with `sv add`:
-
-```sh
-npx sv add
-```
-
-For example, to add Tailwind CSS:
-
-```sh
-npx sv add tailwindcss
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```sh
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
+L'application est packagée via Docker (`Dockerfile` et
+`docker-compose.yml`), avec l'adapter Node de SvelteKit :
 
 ```sh
 npm run build
+npm run preview
 ```
 
-You can preview the production build with `npm run preview`.
+En production, les données (base SQLite, sauvegardes, secret de session)
+sont persistées dans un volume monté sur `/data`.
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+### Scripts utiles
+
+- `npm run check` : vérification des types TypeScript / Svelte
+- `npm run seed` : (ré)initialise la base de données
+- `npm run backup` : effectue une sauvegarde de la base de données

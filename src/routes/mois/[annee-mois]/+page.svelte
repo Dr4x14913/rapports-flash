@@ -9,7 +9,7 @@
 <div class="space-y-6">
 	<div class="flex flex-wrap items-baseline gap-x-4 gap-y-1">
 		<h1 class="text-xl font-semibold text-slate-800 dark:text-slate-100">Rapports de {monthLabel(data.month).toLowerCase()}</h1>
-		<a href="/projets?mois={data.month}" class="text-sm text-emerald-700 dark:text-emerald-400 no-underline hover:underline">
+		<a href="/projets?mois={data.month}" class="text-sm text-brand-700 dark:text-brand-400 no-underline hover:underline">
 			Sujets à aborder en conseil informel →
 		</a>
 	</div>
@@ -22,7 +22,7 @@
 		{#each data.reports as report (report.id)}
 			<article class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-5">
 				<div class="flex items-baseline justify-between gap-2 mb-3">
-					<a href="/elus/{report.slug}" class="font-semibold text-slate-800 dark:text-slate-100 no-underline hover:text-emerald-700 dark:text-emerald-400">
+					<a href="/elus/{report.slug}" class="font-semibold text-slate-800 dark:text-slate-100 no-underline hover:text-brand-700 dark:text-brand-400">
 						{report.full_name}
 					</a>
 					<span class="text-xs text-slate-400 dark:text-slate-500 shrink-0">remis le {formatDate(report.updated_at)}</span>

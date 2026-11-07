@@ -31,7 +31,7 @@
 					bind:value={email}
 					autocomplete="email"
 					required
-					class="w-full rounded-lg border border-slate-300 dark:border-slate-600 px-3 py-2 text-base focus:outline-none focus:ring-2 focus:ring-emerald-500"
+					class="w-full rounded-lg border border-slate-300 dark:border-slate-600 px-3 py-2 text-base focus:outline-none focus:ring-2 focus:ring-brand-500"
 				/>
 			</div>
 			<div>
@@ -43,12 +43,12 @@
 					bind:value={password}
 					autocomplete="current-password"
 					required
-					class="w-full rounded-lg border border-slate-300 dark:border-slate-600 px-3 py-2 text-base focus:outline-none focus:ring-2 focus:ring-emerald-500"
+					class="w-full rounded-lg border border-slate-300 dark:border-slate-600 px-3 py-2 text-base focus:outline-none focus:ring-2 focus:ring-brand-500"
 				/>
 			</div>
 			<button
 				type="submit"
-				class="w-full rounded-lg bg-emerald-700 text-white font-medium px-4 py-2.5 hover:bg-emerald-800 cursor-pointer"
+				class="w-full rounded-lg bg-brand-700 text-white font-medium px-4 py-2.5 hover:bg-brand-800 cursor-pointer"
 			>
 				Se connecter
 			</button>

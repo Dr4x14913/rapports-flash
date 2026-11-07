@@ -5,6 +5,14 @@ import ThemeToggle from '#lib/components/ThemeToggle.svelte';
 
 	let { children } = $props();
 	const user = $derived(page.data.user);
+	// Logo personnalisé défini dans l'admin, sinon le logo par défaut.
+	const logoSrc = $derived(page.data.logo ?? '/logo.svg');
+	// Thème de couleurs dérivé de la teinte dominante du logo (valeurs par
+	// défaut : vert émeraude). Défines via style: sur l'enveloppe racine — un
+	// <style> injecté dans <head> ne pourrait pas évaluer ces expressions.
+	const logoHue = $derived(page.data.logoHue);
+	const brandH = $derived(logoHue ? logoHue.h : 164);
+	const brandS = $derived(logoHue ? `${logoHue.s}%` : '85%');
 
 	// Menu mobile (nom / thème / déconnexion) — invisible sur grand écran.
 	let mobileMenuOpen = $state(false);
@@ -26,12 +34,21 @@ import ThemeToggle from '#lib/components/ThemeToggle.svelte';
 	</script>
 </svelte:head>
 
-<div class="min-h-screen flex flex-col">
+<div
+		class="min-h-screen flex flex-col bg-brand-50/70 transition-colors dark:bg-slate-950"
+		style:--brand-h={brandH}
+		style:--brand-s={brandS}
+	>
 	{#if user}
 		<header class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-700 sticky top-0 z-20">
 			<div class="mx-auto max-w-5xl px-4 py-3 flex flex-wrap items-center gap-x-5 gap-y-2">
-				<a href="/" class="no-underline flex items-center">
-					<img src="/logo.svg" alt="Rapports flash des élus" class="h-10 w-auto" />
+				<a href="/" class="no-underline flex items-center gap-2.5">
+					<img src={logoSrc} alt="Rapports flash des élus" class="h-10 w-10 object-contain" />
+					<!-- Texte du logo (séparé de l'image, modifiable ici) -->
+					<span class="flex flex-col leading-tight">
+						<span class="text-base font-bold text-slate-800 dark:text-slate-100">Rapports flash</span>
+						<span class="text-[11px] font-medium tracking-[0.18em] text-brand-600 dark:text-brand-400">des élus</span>
+					</span>
 				</a>
 				<!-- Nav toujours visible : passe sur sa propre ligne en mobile -->
 				<nav class="flex flex-wrap gap-x-4 gap-y-1 text-sm basis-full sm:basis-auto order-last sm:order-none">

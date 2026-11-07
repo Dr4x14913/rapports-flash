@@ -28,7 +28,7 @@ const reportSchema = z.object({
 	actions_menes: reportField('« Mes principales actions menées »', true),
 	actions_prevues: reportField('« Mes principales actions et réunions prévues »', true),
 	cooperations: reportField('« Les élus, citoyens-partenaires et citoyens avec lesquels je travaille »', false),
-	projets: reportField('« Les projets que je souhaite débattre en Conseil informel »', false)
+	projets: reportField('« Les sujets que je souhaite débattre en Conseil informel »', false)
 });
 
 export const load: PageServerLoad = ({ params, url, locals }) => {

@@ -19,7 +19,7 @@
 				id="mois"
 				bind:value={mois}
 				onchange={() => window.location.assign(`/projets?mois=${mois}`)}
-				class="rounded-lg border border-slate-300 dark:border-slate-600 px-3 py-1.5 bg-white dark:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+				class="rounded-lg border border-slate-300 dark:border-slate-600 px-3 py-1.5 bg-white dark:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-brand-500"
 			>
 				{#each data.months as month (month)}
 					<option value={month}>{monthLabel(month)}</option>
@@ -36,7 +36,7 @@
 		<div class="space-y-4">
 			{#each data.projects as project (project.id)}
 				<article class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-5">
-					<a href="/elus/{project.slug}" class="font-semibold text-slate-800 dark:text-slate-100 no-underline hover:text-emerald-700 dark:text-emerald-400">
+					<a href="/elus/{project.slug}" class="font-semibold text-slate-800 dark:text-slate-100 no-underline hover:text-brand-700 dark:text-brand-400">
 						{project.full_name}
 					</a>
 					<div class="rte mt-2 text-slate-700 dark:text-slate-200 leading-relaxed whitespace-pre-line">

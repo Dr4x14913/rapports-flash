@@ -75,7 +75,7 @@
 			bind:value={actionsMenes}
 			rows={6}
 			placeholder="Vous pouvez indiquer une action par ligne et préciser les résultats obtenus."
-			class="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 px-3 py-2 resize-y focus:outline-none focus:ring-2 focus:ring-emerald-500"
+			class="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 px-3 py-2 resize-y focus:outline-none focus:ring-2 focus:ring-brand-500"
 		></textarea>
 		<p class="text-xs text-slate-400 dark:text-slate-500 mt-1 text-right">{count(actionsMenes)}</p>
 	</section>
@@ -95,7 +95,7 @@
 			bind:value={actionsPrevues}
 			rows={5}
 			placeholder="Actions, réunions et échéances prévues."
-			class="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 px-3 py-2 resize-y focus:outline-none focus:ring-2 focus:ring-emerald-500"
+			class="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 px-3 py-2 resize-y focus:outline-none focus:ring-2 focus:ring-brand-500"
 		></textarea>
 		<p class="text-xs text-slate-400 dark:text-slate-500 mt-1 text-right">{count(actionsPrevues)}</p>
 	</section>
@@ -118,7 +118,7 @@
 			bind:value={cooperations}
 			rows={5}
 			placeholder="Personnes ou groupes concernés, sujets abordés, contributions de chacun."
-			class="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 px-3 py-2 resize-y focus:outline-none focus:ring-2 focus:ring-emerald-500"
+			class="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 px-3 py-2 resize-y focus:outline-none focus:ring-2 focus:ring-brand-500"
 		></textarea>
 		<p class="text-xs text-slate-400 dark:text-slate-500 mt-1 text-right">{count(cooperations)}</p>
 	</section>
@@ -127,12 +127,12 @@
 	<section class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-5">
 		<div class="flex items-start justify-between gap-2 mb-1">
 			<label for="projets" class="block font-medium text-slate-800 dark:text-slate-100">
-				Les projets que je souhaite débattre en Conseil informel
+				Les sujets que je souhaite débattre en Conseil informel
 			</label>
 			<MicButton onResult={(text) => (projets = appendDictated(projets, text))} />
 		</div>
 		<p class="text-sm text-slate-500 dark:text-slate-400 mb-2">
-			Présentez le projet, son contexte, les points à discuter et, le cas échéant, la décision attendue.
+			Présentez le sujet, son contexte, les points à discuter et, le cas échéant, la décision attendue.
 			Mettre un sujet par ligne.
 		</p>
 		<textarea
@@ -140,8 +140,8 @@
 			name="projets"
 			bind:value={projets}
 			rows={5}
-			placeholder="Présentez le projet, son contexte et la décision attendue."
-			class="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 px-3 py-2 resize-y focus:outline-none focus:ring-2 focus:ring-emerald-500"
+			placeholder="Présentez le sujet, son contexte et la décision attendue."
+			class="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 px-3 py-2 resize-y focus:outline-none focus:ring-2 focus:ring-brand-500"
 		></textarea>
 		<p class="text-xs text-slate-400 dark:text-slate-500 mt-1 text-right">{count(projets)}</p>
 	</section>
@@ -155,7 +155,7 @@
 		</a>
 		<button
 			type="submit"
-			class="rounded-lg bg-emerald-700 text-white font-medium px-6 py-2.5 hover:bg-emerald-800 cursor-pointer"
+			class="rounded-lg bg-brand-700 text-white font-medium px-6 py-2.5 hover:bg-brand-800 cursor-pointer"
 		>
 			{existing ? 'Mettre à jour mon rapport' : 'Enregistrer mon rapport'}
 		</button>

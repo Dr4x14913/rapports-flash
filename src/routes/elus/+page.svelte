@@ -11,7 +11,7 @@
 	<div class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 divide-y divide-slate-100 dark:divide-slate-700">
 		{#each data.members as member (member.slug)}
 			<div class="flex flex-wrap items-center gap-x-4 gap-y-1 px-4 py-3">
-				<a href="/elus/{member.slug}" class="font-medium text-slate-800 dark:text-slate-100 no-underline hover:text-emerald-700 dark:text-emerald-400">
+				<a href="/elus/{member.slug}" class="font-medium text-slate-800 dark:text-slate-100 no-underline hover:text-brand-700 dark:text-brand-400">
 					{member.full_name}
 				</a>
 				<span class="text-sm text-slate-500 dark:text-slate-400">

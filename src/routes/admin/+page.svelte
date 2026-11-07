@@ -45,7 +45,7 @@
 						minlength="8"
 						autocomplete="new-password"
 						required
-						class="w-full rounded-lg border border-slate-300 dark:border-slate-600 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+						class="w-full rounded-lg border border-slate-300 dark:border-slate-600 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500"
 					/>
 				</div>
 				<div>
@@ -57,12 +57,12 @@
 						minlength="8"
 						autocomplete="new-password"
 						required
-						class="w-full rounded-lg border border-slate-300 dark:border-slate-600 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+						class="w-full rounded-lg border border-slate-300 dark:border-slate-600 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500"
 					/>
 				</div>
 				<button
 					type="submit"
-					class="w-full rounded-lg bg-emerald-700 text-white font-medium px-4 py-2 hover:bg-emerald-800 cursor-pointer"
+					class="w-full rounded-lg bg-brand-700 text-white font-medium px-4 py-2 hover:bg-brand-800 cursor-pointer"
 				>
 					Définir le mot de passe
 				</button>
@@ -89,12 +89,12 @@
 						type="password"
 						autocomplete="current-password"
 						required
-						class="w-full rounded-lg border border-slate-300 dark:border-slate-600 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+						class="w-full rounded-lg border border-slate-300 dark:border-slate-600 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500"
 					/>
 				</div>
 				<button
 					type="submit"
-					class="w-full rounded-lg bg-emerald-700 text-white font-medium px-4 py-2 hover:bg-emerald-800 cursor-pointer"
+					class="w-full rounded-lg bg-brand-700 text-white font-medium px-4 py-2 hover:bg-brand-800 cursor-pointer"
 				>
 					Se connecter
 				</button>
@@ -120,7 +120,7 @@
 		</div>
 
 		{#if page.form?.flash}
-			<div class="rounded-lg bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-200 text-sm px-4 py-3">
+			<div class="rounded-lg bg-brand-50 dark:bg-brand-950/50 border border-brand-200 dark:border-brand-800 text-brand-800 dark:text-brand-200 text-sm px-4 py-3">
 				{page.form.flash}
 			</div>
 		{/if}
@@ -144,7 +144,7 @@
 						name="full_name"
 						value={page.form?.values?.full_name ?? ''}
 						required
-						class="w-full rounded-lg border border-slate-300 dark:border-slate-600 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+						class="w-full rounded-lg border border-slate-300 dark:border-slate-600 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500"
 					/>
 				</div>
 				<div>
@@ -155,7 +155,7 @@
 						type="email"
 						value={page.form?.values?.email ?? ''}
 						required
-						class="w-full rounded-lg border border-slate-300 dark:border-slate-600 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+						class="w-full rounded-lg border border-slate-300 dark:border-slate-600 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500"
 					/>
 				</div>
 				<div>
@@ -169,13 +169,13 @@
 						type="password"
 						minlength="8"
 						required
-						class="w-full rounded-lg border border-slate-300 dark:border-slate-600 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+						class="w-full rounded-lg border border-slate-300 dark:border-slate-600 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500"
 					/>
 				</div>
 				<div class="sm:col-span-3">
 					<button
 						type="submit"
-						class="rounded-lg bg-emerald-700 text-white font-medium px-4 py-2 hover:bg-emerald-800 cursor-pointer"
+						class="rounded-lg bg-brand-700 text-white font-medium px-4 py-2 hover:bg-brand-800 cursor-pointer"
 					>
 						Créer le compte
 					</button>
@@ -197,7 +197,7 @@
 						type="search"
 						placeholder="Rechercher (nom, e-mail)…"
 						bind:value={search}
-						class="w-64 rounded-lg border border-slate-300 dark:border-slate-600 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
+						class="w-64 rounded-lg border border-slate-300 dark:border-slate-600 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500"
 					/>
 				</div>
 			</div>
@@ -273,7 +273,7 @@
 								minlength="8"
 								autocomplete="new-password"
 								placeholder="8 caractères min."
-								class="rounded-lg border border-slate-300 dark:border-slate-600 px-3 py-1.5 text-sm w-56 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+								class="rounded-lg border border-slate-300 dark:border-slate-600 px-3 py-1.5 text-sm w-56 focus:outline-none focus:ring-2 focus:ring-brand-500"
 							/>
 							<button
 								type="submit"
@@ -297,7 +297,7 @@
 										name="full_name"
 										value={member.full_name}
 										required
-										class="w-full rounded-lg border border-slate-300 dark:border-slate-600 px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
+										class="w-full rounded-lg border border-slate-300 dark:border-slate-600 px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500"
 									/>
 								</div>
 								<div>
@@ -308,7 +308,7 @@
 										type="email"
 										value={member.email}
 										required
-										class="w-full rounded-lg border border-slate-300 dark:border-slate-600 px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
+										class="w-full rounded-lg border border-slate-300 dark:border-slate-600 px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500"
 									/>
 								</div>
 								<button
@@ -324,6 +324,54 @@
 				{/if}
 				</div>
 			</section>
+
+		<!-- Logo du site -->
+		<section class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-5">
+			<h2 class="font-semibold text-slate-800 dark:text-slate-100 mb-1">Logo du site</h2>
+			<p class="text-sm text-slate-500 dark:text-slate-400 mb-4">
+				Image affichée dans l’en-tête, à côté du nom « Rapports flash des élus ». Formats acceptés : PNG,
+				JPEG, WebP ou SVG, 500 Ko maximum — une image carrée sur fond transparent est idéale. La couleur
+				dominante du logo sert de couleur principale à l’interface ; un logo monochrome conserve le thème
+				par défaut.
+			</p>
+			<div class="flex flex-wrap items-center gap-4">
+				<img
+					src={data.logo ?? '/logo.svg'}
+					alt="Aperçu du logo actuel"
+					class="h-14 w-14 object-contain rounded-lg border border-slate-200 dark:border-slate-700"
+				/>
+				<form method="post" action="?/upload-logo" enctype="multipart/form-data" class="flex flex-wrap items-center gap-2">
+					<input
+						id="logo"
+						name="logo"
+						type="file"
+						accept="image/png,image/jpeg,image/webp,image/svg+xml"
+						required
+						class="text-sm text-slate-600 dark:text-slate-300 cursor-pointer file:mr-3 file:rounded-lg file:border-0 file:bg-brand-700 file:px-3 file:py-1.5 file:text-sm file:font-medium file:text-white hover:file:bg-brand-800 file:cursor-pointer"
+					/>
+					<button
+						type="submit"
+						class="rounded-lg bg-brand-700 text-white font-medium px-4 py-2 hover:bg-brand-800 cursor-pointer"
+					>
+						Enregistrer le logo
+					</button>
+				</form>
+				{#if data.logo}
+					<form
+						method="post"
+						action="?/remove-logo"
+						onsubmit={(event) => !confirm('Revenir au logo par défaut ?') && event.preventDefault()}
+					>
+						<button
+							type="submit"
+							class="text-sm text-slate-700 dark:text-slate-200 bg-transparent border border-slate-300 dark:border-slate-600 rounded-lg px-3 py-1.5 hover:bg-slate-50 dark:hover:bg-slate-800 cursor-pointer"
+						>
+							Revenir au logo par défaut
+						</button>
+					</form>
+				{/if}
+			</div>
+		</section>
 
 		<!-- Nombre de mois affichés sur la page d'accueil -->
 		<section class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-5">
@@ -344,7 +392,7 @@
 							max="24"
 							required
 							value={page.form?.values?.months_count ?? page.data.visibleMonths}
-							class="rounded-lg border border-slate-300 dark:border-slate-600 px-3 py-1.5 w-20 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+							class="rounded-lg border border-slate-300 dark:border-slate-600 px-3 py-1.5 w-20 focus:outline-none focus:ring-2 focus:ring-brand-500"
 						/>
 					</div>
 					<span class="pb-2 text-slate-300 dark:text-slate-600">+</span>
@@ -358,13 +406,13 @@
 							max="12"
 							required
 							value={page.form?.values?.future_months_count ?? page.data.futureMonths}
-							class="rounded-lg border border-slate-300 dark:border-slate-600 px-3 py-1.5 w-20 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+							class="rounded-lg border border-slate-300 dark:border-slate-600 px-3 py-1.5 w-20 focus:outline-none focus:ring-2 focus:ring-brand-500"
 						/>
 					</div>
 				</div>
 				<button
 					type="submit"
-					class="rounded-lg bg-emerald-700 text-white font-medium px-4 py-2 hover:bg-emerald-800 cursor-pointer"
+					class="rounded-lg bg-brand-700 text-white font-medium px-4 py-2 hover:bg-brand-800 cursor-pointer"
 				>
 					Enregistrer
 				</button>

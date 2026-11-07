@@ -19,7 +19,7 @@
 			</div>
 		{/if}
 		{#if form?.success}
-			<div class="mb-4 rounded-lg bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-200 dark:border-emerald-800 text-emerald-700 dark:text-emerald-400 text-sm px-3 py-2">
+			<div class="mb-4 rounded-lg bg-brand-50 dark:bg-brand-950/50 border border-brand-200 dark:border-brand-800 text-brand-700 dark:text-brand-400 text-sm px-3 py-2">
 				Mot de passe mis à jour.
 			</div>
 		{/if}
@@ -36,7 +36,7 @@
 					bind:value={currentPassword}
 					autocomplete="current-password"
 					required
-					class="w-full rounded-lg border border-slate-300 dark:border-slate-600 px-3 py-2 text-base focus:outline-none focus:ring-2 focus:ring-emerald-500"
+					class="w-full rounded-lg border border-slate-300 dark:border-slate-600 px-3 py-2 text-base focus:outline-none focus:ring-2 focus:ring-brand-500"
 				/>
 			</div>
 			<div>
@@ -51,7 +51,7 @@
 					autocomplete="new-password"
 					minlength="8"
 					required
-					class="w-full rounded-lg border border-slate-300 dark:border-slate-600 px-3 py-2 text-base focus:outline-none focus:ring-2 focus:ring-emerald-500"
+					class="w-full rounded-lg border border-slate-300 dark:border-slate-600 px-3 py-2 text-base focus:outline-none focus:ring-2 focus:ring-brand-500"
 				/>
 			</div>
 			<div>
@@ -66,12 +66,12 @@
 					autocomplete="new-password"
 					minlength="8"
 					required
-					class="w-full rounded-lg border border-slate-300 dark:border-slate-600 px-3 py-2 text-base focus:outline-none focus:ring-2 focus:ring-emerald-500"
+					class="w-full rounded-lg border border-slate-300 dark:border-slate-600 px-3 py-2 text-base focus:outline-none focus:ring-2 focus:ring-brand-500"
 				/>
 			</div>
 			<button
 				type="submit"
-				class="w-full rounded-lg bg-emerald-700 text-white font-medium px-4 py-2.5 hover:bg-emerald-800 cursor-pointer"
+				class="w-full rounded-lg bg-brand-700 text-white font-medium px-4 py-2.5 hover:bg-brand-800 cursor-pointer"
 			>
 				Mettre à jour le mot de passe
 			</button>

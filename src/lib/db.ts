@@ -215,6 +215,47 @@ export function setSetting(key: string, value: string): void {
 		.run(key, value);
 }
 
+// ---------- Logo du site ----------
+
+const LOGO_KEY = 'logo';
+
+/** Data URI (base64) du logo personnalisé défini dans l'admin, ou undefined si absent. */
+export function getLogo(): string | undefined {
+	return getSetting(LOGO_KEY);
+}
+
+export function setLogo(dataUri: string): void {
+	setSetting(LOGO_KEY, dataUri);
+}
+
+export function removeLogo(): void {
+	db.prepare('DELETE FROM settings WHERE key = ?').run(LOGO_KEY);
+}
+
+const LOGO_HUE_KEY = 'logo_hue';
+
+/** Teinte dominante du logo (degres + saturation en %), extraite a l'upload. */
+export function getLogoHue(): { h: number; s: number } | null {
+	const raw = getSetting(LOGO_HUE_KEY);
+	if (!raw) return null;
+	try {
+		const parsed = JSON.parse(raw) as { h?: unknown; s?: unknown };
+		if (typeof parsed.h !== 'number' || typeof parsed.s !== 'number') return null;
+		if (!Number.isFinite(parsed.h) || !Number.isFinite(parsed.s)) return null;
+		return { h: parsed.h, s: parsed.s };
+	} catch {
+		return null;
+	}
+}
+
+export function setLogoHue(hue: { h: number; s: number }): void {
+	setSetting(LOGO_HUE_KEY, JSON.stringify(hue));
+}
+
+export function removeLogoHue(): void {
+	db.prepare('DELETE FROM settings WHERE key = ?').run(LOGO_HUE_KEY);
+}
+
 /** Nombre de mois affichés sur la page d'accueil (défaut : 3, borné entre 1 et 24). */
 export function getVisibleMonths(defaultValue = 3): number {
 	const raw = Number(getSetting('visible_months'));

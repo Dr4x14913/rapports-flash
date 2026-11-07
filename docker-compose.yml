@@ -4,7 +4,7 @@ services:
     build:
       context: .
       args:
-        ORIGIN: https://rapports-flash.cloud.daviaud.eu
+        ORIGIN: <url>
     container_name: rapports-flash
     volumes:
       - app-data:/data # app.db + backups + secret de session

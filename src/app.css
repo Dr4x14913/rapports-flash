@@ -3,6 +3,30 @@
 /* Mode sombre piloté par la classe .dark sur <html> */
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* Thème de la marque : la teinte (h) et la saturation (s) suivent la couleur
+	dominante du logo défini dans l'admin (injectées dans <head> par le layout).
+	À défaut de logo personnalisé, valeurs du vert émeraude d'origine. */
+:root {
+	--brand-h: 164;
+	--brand-s: 85%;
+}
+
+/* Échelle « brand » dérivée de ces variables (luminosités calquées sur
+	l'échelle emerald pour un rendu identique avec les valeurs par défaut). */
+@theme inline {
+	--color-brand-50: hsl(var(--brand-h) var(--brand-s) 96%);
+	--color-brand-100: hsl(var(--brand-h) var(--brand-s) 90%);
+	--color-brand-200: hsl(var(--brand-h) var(--brand-s) 80%);
+	--color-brand-300: hsl(var(--brand-h) var(--brand-s) 70%);
+	--color-brand-400: hsl(var(--brand-h) var(--brand-s) 55%);
+	--color-brand-500: hsl(var(--brand-h) var(--brand-s) 40%);
+	--color-brand-600: hsl(var(--brand-h) var(--brand-s) 30%);
+	--color-brand-700: hsl(var(--brand-h) var(--brand-s) 22%);
+	--color-brand-800: hsl(var(--brand-h) var(--brand-s) 17%);
+	--color-brand-900: hsl(var(--brand-h) var(--brand-s) 13%);
+	--color-brand-950: hsl(var(--brand-h) var(--brand-s) 8%);
+}
+
 @layer base {
 	/* Contenu riche des rapports historiques : Tailwind (preflight) retire
 		les puces et écrase les titres, les remettre ici à l'affichage. */
@@ -32,7 +56,6 @@
 	}
 
 	body {
-		/* Fond verdâtre doux (clair) / sombre quasi-noir (sombre) */
-		@apply bg-emerald-50/70 text-slate-900 antialiased transition-colors dark:bg-slate-950 dark:text-slate-100;
+		@apply text-slate-900 antialiased dark:text-slate-100;
 	}
 }

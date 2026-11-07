@@ -15,14 +15,29 @@ import {
 	createMember,
 	deleteMember,
 	getFutureMonths,
+	getLogo,
 	getMemberByEmail,
 	getVisibleMonths,
+	removeLogo,
+	removeLogoHue,
 	resetPassword,
 	setActive,
 	setFutureMonths,
+	setLogo,
+	setLogoHue,
 	setVisibleMonths,
 	updateMember
 } from '#lib/db';
+import { extractDominantHue } from '#lib/logo';
+
+// Formats acceptés pour le logo (rendu dans un <img>, jamais exécuté).
+const LOGO_TYPES = new Map([
+	['image/png', 'image/png'],
+	['image/jpeg', 'image/jpeg'],
+	['image/webp', 'image/webp'],
+	['image/svg+xml', 'image/svg+xml']
+]);
+const LOGO_MAX_SIZE = 500 * 1024; // 500 Ko
 
 const createSchema = z.object({
 	full_name: z.string().trim().min(2, 'Nom trop court.'),
@@ -40,7 +55,8 @@ export const load: PageServerLoad = ({ locals }) => {
 		passwordSet: hasAdminPassword(),
 		admin: locals.isAdmin,
 		visibleMonths: getVisibleMonths(3),
-		futureMonths: getFutureMonths(1)
+		futureMonths: getFutureMonths(1),
+		logo: getLogo() ?? null
 	};
 };
 
@@ -156,6 +172,36 @@ export const actions: Actions = {
 		setVisibleMonths(count);
 		setFutureMonths(futureCount);
 		return { flash: `La page d’accueil affiche désormais ${count} mois passé${count > 1 ? 's' : ''} et ${futureCount} mois futur${futureCount > 1 ? 's' : ''}.` };
+	},
+
+	'upload-logo': async ({ request, locals }) => {
+		if (!locals.isAdmin) return fail(403, { error: 'Réservé à l’administrateur.' });
+		const data = await request.formData();
+		const file = data.get('logo');
+		if (!(file instanceof File)) return fail(400, { error: 'Aucun fichier reçu.' });
+		if (file.size === 0) return fail(400, { error: 'Le fichier est vide.' });
+		if (file.size > LOGO_MAX_SIZE) return fail(400, { error: 'Image trop lourde (500 Ko maximum).' });
+		const mime = LOGO_TYPES.get(file.type);
+		if (!mime) return fail(400, { error: 'Format non pris en charge : PNG, JPEG, WebP ou SVG.' });
+		const buffer = Buffer.from(await file.arrayBuffer());
+		setLogo(`data:${mime};base64,${buffer.toString('base64')}`);
+		// Le thème de couleurs suit la teinte dominante du logo ; en cas d'image
+		// monochrome (ou illisible), on repasse au thème par défaut.
+		const hue = await extractDominantHue(buffer);
+		if (hue) setLogoHue(hue);
+		else removeLogoHue();
+		return {
+			flash: hue
+				? 'Logo mis à jour : le thème de couleurs suit sa teinte dominante.'
+				: 'Logo mis à jour (aucune couleur dominante détectée : thème par défaut conservé).'
+		};
+	},
+
+	'remove-logo': async ({ locals }) => {
+		if (!locals.isAdmin) return fail(403, { error: 'Réservé à l’administrateur.' });
+		removeLogo();
+		removeLogoHue();
+		return { flash: 'Logo réinitialisé : retour au logo et au thème par défaut.' };
 	},
 
 	delete: async ({ request, locals }) => {

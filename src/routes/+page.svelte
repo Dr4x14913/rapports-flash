@@ -19,7 +19,7 @@
 		</p>
 		<a
 			href="/rapport"
-			class="inline-block mt-4 rounded-lg bg-emerald-700 text-white font-medium px-4 py-2.5 no-underline hover:bg-emerald-800"
+			class="inline-block mt-4 rounded-lg bg-brand-700 text-white font-medium px-4 py-2.5 no-underline hover:bg-brand-800"
 		>
 			Compléter mon rapport
 		</a>
@@ -35,11 +35,11 @@
 			<div class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 divide-y divide-slate-100 dark:divide-slate-700">
 				{#each months as entry (entry.month)}
 					<div class="flex flex-wrap items-center gap-x-4 gap-y-1 px-4 py-3">
-						<a href="/mois/{entry.month}" class="font-medium text-slate-800 dark:text-slate-100 no-underline hover:text-emerald-700 dark:text-emerald-400 w-40">
+						<a href="/mois/{entry.month}" class="font-medium text-slate-800 dark:text-slate-100 no-underline hover:text-brand-700 dark:text-brand-400 w-40">
 							{monthLabel(entry.month)}
 						</a>
 						<span
-							class="text-sm {entry.submitted >= entry.expected ? 'text-emerald-700 dark:text-emerald-400' : 'text-amber-700 dark:text-amber-400'}"
+							class="text-sm {entry.submitted >= entry.expected ? 'text-brand-700 dark:text-brand-400' : 'text-amber-700 dark:text-amber-400'}"
 						>
 							{entry.submitted} / {entry.expected} rapport{entry.expected > 1 ? 's' : ''} remis
 						</span>

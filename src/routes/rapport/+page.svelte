@@ -43,7 +43,7 @@
 					id="mois"
 					name="mois"
 					bind:value={chosenMonth}
-					class="rounded-lg border border-slate-300 dark:border-slate-600 px-3 py-2 bg-white dark:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+					class="rounded-lg border border-slate-300 dark:border-slate-600 px-3 py-2 bg-white dark:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-brand-500"
 				>
 					{#each selectableMonths as { name, value } (value)}
 						<option {value}>{name}</option>
@@ -60,13 +60,13 @@
 					max={data.maxYear}
 					bind:value={chosenYear}
 					required
-					class="w-28 rounded-lg border border-slate-300 dark:border-slate-600 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+					class="w-28 rounded-lg border border-slate-300 dark:border-slate-600 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500"
 				/>
 			</div>
 			<button
 				type="submit"
 				disabled={selectableMonths.length === 0}
-				class="rounded-lg bg-emerald-700 text-white font-medium px-5 py-2 hover:bg-emerald-800 cursor-pointer disabled:cursor-not-allowed disabled:opacity-50"
+				class="rounded-lg bg-brand-700 text-white font-medium px-5 py-2 hover:bg-brand-800 cursor-pointer disabled:cursor-not-allowed disabled:opacity-50"
 			>
 				Écrire le rapport
 			</button>
@@ -91,14 +91,14 @@
 					<div class="flex flex-wrap items-center gap-x-4 gap-y-1 px-4 py-3">
 						<a
 							href="/rapport/{report.month}"
-							class="font-medium text-slate-800 dark:text-slate-100 no-underline hover:text-emerald-700 dark:text-emerald-400 w-40"
+							class="font-medium text-slate-800 dark:text-slate-100 no-underline hover:text-brand-700 dark:text-brand-400 w-40"
 						>
 							{monthLabel(report.month)}
 						</a>
 						<span class="text-sm text-slate-500 dark:text-slate-400">mis à jour le {formatDate(report.updated_at)}</span>
 						<a
 							href="/rapport/{report.month}"
-							class="ml-auto text-sm text-emerald-700 dark:text-emerald-400 no-underline hover:text-emerald-800 dark:hover:text-emerald-200 dark:text-emerald-200"
+							class="ml-auto text-sm text-brand-700 dark:text-brand-400 no-underline hover:text-brand-800 dark:hover:text-brand-200 dark:text-brand-200"
 						>
 							{isTooOldToEdit(report.month) ? 'Voir →' : 'Modifier →'}
 						</a>

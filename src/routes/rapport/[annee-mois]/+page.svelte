@@ -11,7 +11,7 @@
 
 {#if data.sent}
 	<div class="max-w-lg mx-auto mt-10">
-		<div class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-emerald-200 dark:border-emerald-800 p-6 text-center">
+		<div class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-brand-200 dark:border-brand-800 p-6 text-center">
 			<div class="text-3xl mb-2">✓</div>
 			<h1 class="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-4">
 				Merci. Votre rapport flash a bien été enregistré et partagé.
@@ -19,7 +19,7 @@
 			<div class="flex flex-col gap-2">
 				<a
 					href="/mois/{data.month}"
-					class="rounded-lg bg-emerald-700 text-white font-medium px-4 py-2.5 no-underline hover:bg-emerald-800"
+					class="rounded-lg bg-brand-700 text-white font-medium px-4 py-2.5 no-underline hover:bg-brand-800"
 				>
 					Voir la vue du mois
 				</a>
